@@ -1,8 +1,8 @@
 import pickle
 import sys, os
 
-from ch3.noneLinerFunction import sigmoid
-from ch3.softmax import enhanced_softmax
+from noneLinerFunction import sigmoid
+from softmax import enhanced_softmax
 
 sys.path.append(os.pardir)
 import numpy as np
@@ -21,7 +21,7 @@ def get_data():
 
 
 def init_network():
-    with open("ch3/dataset/sample_weight.pkl", "rb") as f:
+    with open("dataset/sample_weight.pkl", "rb") as f:
         network = pickle.load(f)
     return network
 
