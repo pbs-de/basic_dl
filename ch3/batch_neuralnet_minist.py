@@ -1,8 +1,8 @@
 import pickle
 import sys, os
 
-from ch3.noneLinerFunction import sigmoid
-from ch3.softmax import enhanced_softmax
+from noneLinerFunction import sigmoid
+from softmax import enhanced_softmax
 
 sys.path.append(os.pardir)
 import numpy as np
@@ -21,7 +21,7 @@ def get_data():
 
 
 def init_network():
-    with open("ch3/dataset/sample_weight.pkl", "rb") as f:
+    with open("dataset/sample_weight.pkl", "rb") as f:
         network = pickle.load(f)
     return network
 
@@ -44,8 +44,9 @@ batch_size = 100
 accuracy_cnt = 0
 
 for i in range(0, len(x), batch_size):
-    x_batch = x[i:i+batch_size]
+    x_batch = x[i:i + batch_size]
     y_batch = predict(network, x_batch)
     p = np.argmax(y_batch, axis=1)
-    accuracy_cnt += np.sum(p == t[i:i+batch_size])
-print(f"Accuracy: {float(accuracy_cnt/len(x))}")
+    accuracy_cnt = np.sum(p == y_batch[i:i+batch_size])
+
+print(f"Accuracy: {float(accuracy_cnt/ len(x))}")
